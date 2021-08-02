@@ -10,7 +10,7 @@ import android.webkit.WebView;
 
 public class WebViewActivity extends AppCompatActivity {
 
-    private Toolbar toolbar;
+//    private Toolbar toolbar;
     private WebView webView;
 
     @Override
@@ -18,9 +18,7 @@ public class WebViewActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_web_view);
 
-        toolbar = findViewById(R.id.toolBar);
         webView = findViewById(R.id.webview);
-        setSupportActionBar(toolbar);
 
         Intent intent = getIntent();
         String url = intent.getStringExtra("url");

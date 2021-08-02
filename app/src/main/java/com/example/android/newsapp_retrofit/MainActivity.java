@@ -3,51 +3,42 @@ package com.example.android.newsapp_retrofit;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.viewpager.widget.ViewPager;
-
 import android.os.Bundle;
-
 import com.example.android.newsapp_retrofit.Adapter.PagerAdapter;
-import com.google.android.material.tabs.TabItem;
 import com.google.android.material.tabs.TabLayout;
 
 public class MainActivity extends AppCompatActivity {
-    private TabLayout tabLayout;
-    private TabItem mHome,mSports,mHealth,mScience,mEntertainment,mTechnology;
-    private PagerAdapter mPagerAdapter;
-    private Toolbar mToolbar;
 
-    String api = "aae324fdda6f40da9be4ff2584411420";
+    private PagerAdapter mPagerAdapter;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        mToolbar = findViewById(R.id.toolBar);
-        setSupportActionBar(mToolbar);
-
-        mHome = findViewById(R.id.home);
-        mSports = findViewById(R.id.sports);
-        mHealth = findViewById(R.id.health);
-        mScience = findViewById(R.id.science);
-        mEntertainment = findViewById(R.id.entertainment);
-        mTechnology = findViewById(R.id.technology);
-
+        Toolbar toolbar = findViewById(R.id.toolBar);
+        setSupportActionBar(toolbar);
         ViewPager viewPager = findViewById(R.id.fragmentContainer);
-        TabLayout tabLayout = findViewById(R.id.include);
+        TabLayout tabLayout = findViewById(R.id.tab_layout);
 
-        mPagerAdapter = new PagerAdapter(getSupportFragmentManager(),6);
+        mPagerAdapter = new PagerAdapter(getSupportFragmentManager());
         viewPager.setAdapter(mPagerAdapter);
+        tabLayout.setupWithViewPager(viewPager);
+
+        tabLayout.getTabAt(0).setIcon(R.drawable.ic_baseline_home_24);
+        tabLayout.getTabAt(1).setIcon(R.drawable.ic_baseline_sports_handball_24);
+        tabLayout.getTabAt(2).setIcon(R.drawable.ic_baseline_health_and_safety_24);
+        tabLayout.getTabAt(3).setIcon(R.drawable.ic_baseline_science_24);
+        tabLayout.getTabAt(4).setIcon(R.drawable.entertainment);
+        tabLayout.getTabAt(5).setIcon(R.drawable.technology);
+
+        viewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
 
         tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
             @Override
             public void onTabSelected(TabLayout.Tab tab) {
                 viewPager.setCurrentItem(tab.getPosition());
-                if(tab.getPosition() == 0 || tab.getPosition() == 1 || tab.getPosition() == 2 || tab.getPosition() == 3 || tab.getPosition() == 4 || tab.getPosition() == 5)
-                {
-                    mPagerAdapter.notifyDataSetChanged();
-                }
-
             }
 
             @Override
@@ -61,7 +52,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        viewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
+
 
     }
 

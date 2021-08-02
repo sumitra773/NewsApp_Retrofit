@@ -13,7 +13,7 @@ import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
-import com.example.android.newsapp_retrofit.Model.ModelClass;
+import com.example.android.newsapp_retrofit.Model.Articles;
 import com.example.android.newsapp_retrofit.R;
 import com.example.android.newsapp_retrofit.WebViewActivity;
 
@@ -22,11 +22,11 @@ import java.util.ArrayList;
 public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ViewHolder> {
 
     Context context;
-    ArrayList<ModelClass> modelClassArrayList;
+    ArrayList<Articles> mArticlesArrayList;
 
-    public ItemAdapter(Context context, ArrayList<ModelClass> modelClassArrayList) {
+    public ItemAdapter(Context context, ArrayList<Articles> articlesArrayList) {
         this.context = context;
-        this.modelClassArrayList = modelClassArrayList;
+        this.mArticlesArrayList = articlesArrayList;
     }
 
     @NonNull
@@ -43,22 +43,22 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ViewHolder> {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(context, WebViewActivity.class);
-                intent.putExtra("url",modelClassArrayList.get(position).getUrl());
+                intent.putExtra("url", mArticlesArrayList.get(position).getUrl());
                 context.startActivity(intent);
 
             }
         });
-        holder.mTime.setText("Published At :-"+modelClassArrayList.get(position).getPublishedAt());
-        holder.mHeading.setText(modelClassArrayList.get(position).getTitle());
-        holder.mAuthor.setText(modelClassArrayList.get(position).getAuthor());
-        holder.mContent.setText(modelClassArrayList.get(position).getDescription());
-        Glide.with(context).load(modelClassArrayList.get(position).getUrlToImage()).into(holder.mImageView);
+        holder.mTime.setText("Published At :-"+ mArticlesArrayList.get(position).getPublishedAt());
+        holder.mHeading.setText(mArticlesArrayList.get(position).getTitle());
+        holder.mAuthor.setText(mArticlesArrayList.get(position).getAuthor());
+        holder.mContent.setText(mArticlesArrayList.get(position).getDescription());
+        Glide.with(context).load(mArticlesArrayList.get(position).getUrlToImage()).into(holder.mImageView);
 
     }
 
     @Override
     public int getItemCount() {
-        return modelClassArrayList.size();
+        return mArticlesArrayList.size();
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {

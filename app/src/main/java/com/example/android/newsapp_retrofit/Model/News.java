@@ -1,16 +1,14 @@
 package com.example.android.newsapp_retrofit.Model;
 
-import com.example.android.newsapp_retrofit.Model.ModelClass;
-
 import java.util.ArrayList;
 
 public class News {
 
     private String status;
     private String totalResults;
-    private ArrayList<ModelClass> articles;
+    private ArrayList<Articles> articles;
 
-    public News(String status, String totalResults, ArrayList<ModelClass> articles) {
+    public News(String status, String totalResults, ArrayList<Articles> articles) {
         this.status = status;
         this.totalResults = totalResults;
         this.articles = articles;
@@ -32,11 +30,11 @@ public class News {
         this.totalResults = totalResults;
     }
 
-    public ArrayList<ModelClass> getArticles() {
+    public ArrayList<Articles> getArticles() {
         return articles;
     }
 
-    public void setArticles(ArrayList<ModelClass> articles) {
+    public void setArticles(ArrayList<Articles> articles) {
         this.articles = articles;
     }
 }

@@ -1,10 +1,10 @@
 package com.example.android.newsapp_retrofit.Model;
 
-public class ModelClass {
+public class Articles {
 
     private String author,title,description,url,urlToImage,publishedAt;
 
-    public ModelClass(String author, String title, String description, String url, String urlToImage, String publishedAt) {
+    public Articles(String author, String title, String description, String url, String urlToImage, String publishedAt) {
         this.author = author;
         this.title = title;
         this.description = description;
